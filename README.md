@@ -71,6 +71,14 @@ Cadena de mejora evaluada: **SHA-1** (roto, colisiones desde 2005) → **SHA-256
 
 ---
 
+## Código propio en este repositorio
+
+Cada script implementa el ejercicio correspondiente de la tabla de arriba (el número indica a cuál):
+
+`01-xor-disociacion-clave.py` · `02-aes-cbc-pkcs7.py` · `03-chacha20-poly1305.py` · `04-jwt-hs256.py` · `05-sha3-avalancha.py` · `06-hmac-sha256.py` · `07-argon2-passwords.py` · `09-kcv.py` · `11-rsa-oaep.py` · `12-aes-gcm-nonce.py` · `13-firma-rsa-pkcs1v5.py` · `13-firma-ed25519.py` · `14-hkdf-sha512.py` · `15-tr31-keyblock.py`
+
+---
+
 ## Stack
 
 `PyCryptodome` · `GPG / PGP` · `PyJWT` · `CyberChef` · `psec (TR-31)` · `hashlib` · `Argon2`
