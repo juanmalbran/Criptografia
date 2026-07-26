@@ -26,7 +26,7 @@
 
 ### JWT — escalada de privilegios detectada y bloqueada
 
-Un JWT firmado con HMAC-SHA256 (`rol: isNormal`) fue interceptado y modificado por un atacante a `rol: isAdmin`. Al no conocer la clave secreta, no pudo regenerar una firma válida — PyJWT rechazó el token en la verificación.
+Un **JWT** (*JSON Web Token*: un token firmado que transporta la identidad y los permisos de un usuario entre cliente y servidor) firmado con HMAC-SHA256 (`rol: isNormal`) fue interceptado y modificado por un atacante a `rol: isAdmin`. Al no conocer la clave secreta, no pudo regenerar una firma válida — PyJWT rechazó el token en la verificación.
 
 ```
 Token original → rol: isNormal → firma válida
@@ -37,7 +37,7 @@ Token alterado → rol: isAdmin  → firma inválida → rechazado
 
 ### AES-GCM — vulnerabilidad de nonce reutilizado
 
-Un sistema reutilizaba siempre la misma clave y el mismo nonce en AES-GCM — rompe por completo las garantías de confidencialidad e integridad del esquema AEAD (permite recuperar keystream y falsificar tags). Corrección aplicada: nonce aleatorio de 12 bytes por mensaje con `Crypto.Random.get_random_bytes`.
+Un sistema reutilizaba siempre la misma clave y el mismo **nonce** (*number used once*: un valor que debe ser único e irrepetible en cada cifrado) en AES-GCM — esto rompe por completo las garantías del esquema **AEAD** (*cifrado autenticado*: cifra los datos y a la vez detecta cualquier manipulación), permitiendo recuperar el keystream y falsificar los tags de integridad. Corrección aplicada: nonce aleatorio de 12 bytes por mensaje con `Crypto.Random.get_random_bytes`.
 
 ### ChaCha20 → ChaCha20-Poly1305 (AEAD)
 
@@ -45,7 +45,7 @@ ChaCha20 solo garantiza confidencialidad, pero no integridad. Se migró a **ChaC
 
 ### Almacenamiento seguro de contraseñas
 
-Cadena de mejora evaluada: **SHA-1** (roto, colisiones desde 2005) → **SHA-256 + Salt** (evita rainbow tables, pero sigue siendo rápido = vulnerable a fuerza bruta con hardware dedicado) → **Argon2id** (computacionalmente costoso por diseño, resistente incluso con GPU/ASIC).
+Cadena de mejora evaluada: **SHA-1** (roto — ataques de colisión teóricos desde 2005, colisión práctica pública en 2017 con *SHAttered*) → **SHA-256 + Salt** (un *salt* es un valor aleatorio que se añade a cada contraseña antes de hashear, para que dos claves iguales no produzcan el mismo hash; evita las *rainbow tables* —tablas precomputadas de hashes—, pero SHA-256 sigue siendo rápido = vulnerable a fuerza bruta con hardware dedicado) → **Argon2id** (computacionalmente costoso por diseño, resistente incluso con GPU/ASIC).
 
 ---
 
