@@ -54,7 +54,7 @@ Cadena de mejora evaluada: **SHA-1** (roto — ataques de colisión teóricos de
 | # | Ejercicio | Resultado clave |
 |---|---|---|
 | 1 | Disociación de clave XOR | Clave dinámica recuperada vía `A XOR C = B` sobre clave de 16 bytes |
-| 2 | AES/CBC/PKCS7 | Descifrado correcto; diferencia entre padding PKCS7 y X9.23 |
+| 2 | AES/CBC/PKCS7 | Descifrado correcto; padding PKCS7 vs X9.23 visualizado en CyberChef |
 | 3 | ChaCha20 → AEAD | Cifrado + propuesta de integridad con Poly1305 |
 | 4 | JWT (HS256) | Ataque de escalada de rol detectado y rechazado |
 | 5 | SHA3-256 / SHA2-512 | Efecto avalancha verificado (1 carácter cambia el hash completo) |
@@ -76,6 +76,8 @@ Cadena de mejora evaluada: **SHA-1** (roto — ataques de colisión teóricos de
 Cada script implementa el ejercicio correspondiente de la tabla de arriba (el número indica a cuál):
 
 `01-xor-disociacion-clave.py` · `02-aes-cbc-pkcs7.py` · `03-chacha20-poly1305.py` · `04-jwt-hs256.py` · `05-sha3-avalancha.py` · `06-hmac-sha256.py` · `07-argon2-passwords.py` · `09-kcv.py` · `11-rsa-oaep.py` · `12-aes-gcm-nonce.py` · `13-firma-rsa-pkcs1v5.py` · `13-firma-ed25519.py` · `14-hkdf-sha512.py` · `15-tr31-keyblock.py`
+
+> Los ejercicios **08** (rediseño de una API sin TLS — ejercicio de diseño) y **10** (firma y cifrado con GPG por línea de comandos) no llevan script propio: se resolvieron sin código Python.
 
 ---
 
